@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom"
 import FormLoginRegister from "../componnent/FormLoginRegister"
 
-export default function RegisterPage() {
+export default function RegisterPage({url}) {
     const navigate = useNavigate({url})
     async function handleSubmit(e, form) {
         try {
