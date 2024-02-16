@@ -11,7 +11,7 @@ function App() {
     <>
     <GoogleOAuthProvider clientId="917780056581-drc9i137r8lllt9kduia5n31nufpgdrl.apps.googleusercontent.com">
       <RouterProvider router={router} />
-    </GoogleOAuthProvider>;
+    </GoogleOAuthProvider>
     </>
   )
 }
