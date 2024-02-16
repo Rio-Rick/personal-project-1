@@ -130,7 +130,7 @@ export default function FormLoginRegister({handleSubmit , prop}) {
                     <div className="text-gray-400">
                         {prop === "login" ? "don't have account ? " : "have account ? "}
                         <Link 
-                            to={prop == "login" ? "/register" : "/login"}
+                            to={prop == "login" ? "/registers" : "/login"}
                             className="h-5 w-5 text-gray-400"
                         >
                             {prop == "login" ? "register" : "login  "}
