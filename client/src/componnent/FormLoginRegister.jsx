@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { GoogleLogin } from '@react-oauth/google';
+import Swal from "sweetalert2";
+import axios from "axios";
+
+const CLIENT_ID = "4d360f2cc0265abaa6a8"
+
 export default function FormLoginRegister({handleSubmit , prop}) {
     const[form, setForm] = useState({
         email : "",
         password : ""
     })
-    
+    const navigate = useNavigate()
     function handleChange(event) {
         const { name, value } = event.target
         setForm({
@@ -13,6 +19,39 @@ export default function FormLoginRegister({handleSubmit , prop}) {
             [name] : value
         })
     }
+
+    async function googleLogin(codeResponse) {
+        try {
+            console.log(codeResponse);
+            const { data } = await axios.post(
+                `https://server.rio-rick.tech/google-login`, null, {
+                headers: {
+                    token: codeResponse.credential
+                }
+            });
+            localStorage.setItem("access_token", data.access_token)
+            navigate('/')
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: error.response.data.message,
+            });
+        }
+    }
+
+    // useEffect(() => {
+    //     // localhost:3000/?code=ASDFASDFASDFASDF
+    //     const queryString = window.location.search;
+    //     const urlParams = new URLSearchParams(queryString);
+    //     const codeParam = urlParams.get("code");
+    //     console.log(codeParam);
+    // }, []);
+
+    // function loginWithGithub() {
+    //     window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
+    // }
+
     return(
         <>
             {/* component */}
@@ -97,6 +136,18 @@ export default function FormLoginRegister({handleSubmit , prop}) {
                             {prop == "login" ? "register" : "login  "}
                         </Link>
                     </div>
+                    <div className=" items-center justify-center ml-5">
+                        <GoogleLogin
+                            onSuccess={googleLogin}
+                            
+                            />;
+                    </div>
+                    {/* <button
+                    className="block w-full bg-indigo-600 py-2 rounded-2xl text-white font-semibold mb-2"
+                    onClick={loginWithGithub}
+                    >
+                    Git Hub
+                    </button> */}
                 </form>
                 </div>
             </div>
