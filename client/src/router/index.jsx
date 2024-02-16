@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         }
     },
     {
-        path : "/register",
+        path : "/registers",
         element : <RegisterPage url={url} />,
         loader : () => {
             if(localStorage.access_token) {
