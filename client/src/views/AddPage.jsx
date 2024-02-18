@@ -29,13 +29,14 @@ export default function AddPage({ url}) {
             if(!file) {
                 throw {name : "RequiredFile"}
             }
-
+            console.log(fd);
             const { data } = await axios.post(`${url}/foods`,fd, {
               headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
               }
             });
+            console.log(data);
             navigate('/')
             
             Swal.fire({
