@@ -45,6 +45,7 @@ export default function AddPage({ url}) {
                 icon: "success"
             });
         } catch (error) {
+            console.log(error);
             if(error.name === "RequiredName") {
                 Swal.fire({
                     title: "Error!",
