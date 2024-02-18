@@ -2,8 +2,9 @@ import axios from "axios"
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react"
 import FormCuisine from "../componnent/FormCuisine";
-
+import {useNavigate} from "react-router-dom"
 export default function AddPage({ url}) {
+    const navigate = useNavigate()
     const [file, setFile] = useState(null);
     const [form, setForm] = useState({
         name : "",
