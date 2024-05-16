@@ -25,9 +25,7 @@ class UserController {
 
     static async login(req, res, next) {
         try {
-            console.log("ini jalan, <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             const {email, password} = req.body
-            console.log(email, password);
             if(!email) throw { name : "EmailLoginError"}
             if(!password) throw {name : "PasswordLoginError"}
 
@@ -54,8 +52,6 @@ class UserController {
             })
 
         } catch (error) {
-            console.log(error);
-            console.log("bako");
             next(error)
 
         }
