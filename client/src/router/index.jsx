@@ -7,7 +7,7 @@ import OrderPage from "../views/OrderPage";
 import FormCuisine from "../componnent/FormCuisine";
 import AddPage from "../views/AddPage";
 import EditPage from "../views/EditPage";
-const url = "https://server.rio-rick.tech";
+const url = "http://localhost:3000";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         }
     },
     {
-        path : "/registers",
+        path : "/register",
         element : <RegisterPage url={url} />,
         loader : () => {
             if(localStorage.access_token) {

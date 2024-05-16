@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit' 
 import axios from 'axios'
 import Swal from 'sweetalert2'
-const url = "https://server.rio-rick.tech";
+const url = "http://localhost:3000";
 
 
 const initialState = {

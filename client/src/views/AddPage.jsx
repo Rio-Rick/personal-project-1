@@ -2,7 +2,8 @@ import axios from "axios"
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react"
 import FormCuisine from "../componnent/FormCuisine";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
 export default function AddPage({ url}) {
     const navigate = useNavigate()
     const [file, setFile] = useState(null);
@@ -30,14 +31,13 @@ export default function AddPage({ url}) {
             if(!file) {
                 throw {name : "RequiredFile"}
             }
-            console.log(fd);
+            
             const { data } = await axios.post(`${url}/foods`,fd, {
               headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
               }
             });
-            console.log(data);
             navigate('/')
             
             Swal.fire({
@@ -46,7 +46,6 @@ export default function AddPage({ url}) {
                 icon: "success"
             });
         } catch (error) {
-            console.log(error);
             if(error.name === "RequiredName") {
                 Swal.fire({
                     title: "Error!",

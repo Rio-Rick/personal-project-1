@@ -12,6 +12,7 @@ export default function LoginPage({url}) {
         try {
             e.preventDefault()
             const {data} = await axios.post(`${url}/login`, form, {})
+            console.log(data);
             localStorage.setItem("access_token", data.access_token)
             navigate('/')
             Swal.fire({

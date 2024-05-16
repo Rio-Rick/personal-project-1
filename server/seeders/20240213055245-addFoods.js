@@ -22,8 +22,8 @@ module.exports = {
           url: 'https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser',
           params: {
             'ingr' : `${name}`,
-            'nutrition-type': 'cooking',
-            'category[0]': 'generic-foods',
+            'nutrition-type': 'logging',
+            'category[0]': 'generic-meals',
           },
           headers: {
             'X-RapidAPI-Key': 'e7e78573a8mshe1637ec66675b3dp12e64djsn69a6de85d839',
@@ -57,7 +57,7 @@ module.exports = {
       }
     }
 
-    let names = ['meat','steak','chicken','noodle','pizza','cheese']
+    let names = ['hamburger','steak','fried','pasta', 'ramen' ,'pizza','cheese']
     for(let item of names) {
       const data = await findData(item)
       await queryInterface.bulkInsert('Cuisines', data, {})

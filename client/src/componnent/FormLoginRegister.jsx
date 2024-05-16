@@ -24,7 +24,7 @@ export default function FormLoginRegister({handleSubmit , prop}) {
         try {
             console.log(codeResponse);
             const { data } = await axios.post(
-                `https://server.rio-rick.tech/google-login`, null, {
+                `http://localhost:3000/google-login`, null, {
                 headers: {
                     token: codeResponse.credential
                 }
@@ -130,7 +130,7 @@ export default function FormLoginRegister({handleSubmit , prop}) {
                     <div className="text-gray-400">
                         {prop === "login" ? "don't have account ? " : "have account ? "}
                         <Link 
-                            to={prop == "login" ? "/registers" : "/login"}
+                            to={prop == "login" ? "/register" : "/login"}
                             className="h-5 w-5 text-gray-400"
                         >
                             {prop == "login" ? "register" : "login  "}

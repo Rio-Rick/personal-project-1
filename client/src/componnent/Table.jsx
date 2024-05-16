@@ -4,7 +4,7 @@ import Swal  from "sweetalert2"
 import { fetchAsync } from "../features/cuisine/cuisine-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-const url = "https://server.rio-rick.tech";
+const url = "http://localhost:3000";
 
 export default function Table({product, prop, role}) {
     function currencyFormat(num) {
