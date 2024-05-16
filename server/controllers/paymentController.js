@@ -1,5 +1,7 @@
 const midtransClient = require('midtrans-client');
 const {Cuisine, User, Order} = require('../models/index')
+const SERVER_KEY_MIDTRANS = process.env.SERVER_KEY_MIDTRANS
+
 class PaymentController {
     static async initiateMidtrans(req, res, next) {
         try {
@@ -8,7 +10,7 @@ class PaymentController {
             let snap = new midtransClient.Snap({
                 // Set to true if you want Production Environment (accept real transaction).
                 isProduction : false,
-                serverKey : 'SB-Mid-server-lXYPZ0Ul8tM3wMhiYoN7wUMm'
+                serverKey : SERVER_KEY_MIDTRANS
             });
             const orderId = Math.random().toString();
             console.log(orderId);
